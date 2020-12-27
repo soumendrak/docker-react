@@ -1,0 +1,7 @@
+sudo: required
+services:
+  - docker
+before-install:
+  - docker build -t soumendrak/docker-react -f Dockerfile.dev .
+script:
+  - docker run -e CI=true soumendrak/docker-react npm run test -- -- coverage
